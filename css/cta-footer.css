@@ -1,0 +1,42 @@
+/**
+ * CTA strip, footer, section alternates
+ */
+
+.section-alt {
+  background: var(--surface);
+}
+
+.cta-strip {
+  background: var(--primary);
+  color: var(--surface);
+  padding: var(--space-10) 0;
+  text-align: center;
+}
+
+.cta-strip p {
+  margin: 0 0 var(--space-4);
+  font-size: 1.05rem;
+  max-width: 42ch;
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--text-on-dark);
+}
+
+.cta-strip a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--secondary);
+  color: var(--surface);
+  text-decoration: none;
+  padding: 0.65rem var(--space-6);
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: background 0.2s;
+}
+
+.cta-strip a:hover {
+  background: var(--secondary-light);
+}
+

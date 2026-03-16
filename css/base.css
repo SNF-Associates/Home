@@ -1,0 +1,72 @@
+/**
+ * Base styles, layout, shared utilities
+ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+#top {
+  scroll-margin-top: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0.0625rem;
+  height: 0.0625rem;
+  pointer-events: none;
+}
+
+section[id] {
+  scroll-margin-top: 5rem;
+}
+
+body {
+  margin: 0;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--primary);
+  background: var(--background);
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-5);
+}
+
+/* Shared icon styling */
+.icon {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon svg {
+  display: block;
+}
+
+.contact-bar .icon {
+  width: 1em;
+  height: 1em;
+  font-size: 1rem;
+}
+
+.cta-strip a .icon {
+  width: 1.1em;
+  height: 1.1em;
+  margin-right: 0.35rem;
+}
+
+footer a .icon {
+  width: 0.95em;
+  height: 0.95em;
+  flex-shrink: 0;
+}
