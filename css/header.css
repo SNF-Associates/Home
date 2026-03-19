@@ -3,14 +3,51 @@
  */
 
 header {
-  background: var(--primary);
+  background: transparent;
   color: var(--surface);
-  padding: 1rem 0;
-  position: sticky;
-  top: 0;
+  padding: 1.5rem 0;
+  position: absolute;
+  width: 100%;
+  left: 0;
   z-index: 100;
-  box-shadow: var(--shadow);
+  box-shadow: none;
+  transition: background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
 }
+
+header.scrolled, header.menu-open {
+  position: fixed;
+  top: 0;
+  background: var(--primary);
+  box-shadow: var(--shadow);
+  padding: 1rem 0;
+}
+
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  z-index: 200;
+  margin-left: auto;
+}
+
+.hamburger, .hamburger::before, .hamburger::after {
+  content: "";
+  display: block;
+  width: 1.5rem;
+  height: 0.125rem;
+  background: var(--surface);
+  transition: transform 0.3s ease, background 0.3s ease;
+  border-radius: 2px;
+}
+
+.hamburger::before { transform: translateY(-0.4rem); }
+.hamburger::after { transform: translateY(0.4rem); }
+
+.mobile-menu-btn.active .hamburger { background: transparent; }
+.mobile-menu-btn.active .hamburger::before { transform: translateY(0) rotate(45deg); }
+.mobile-menu-btn.active .hamburger::after { transform: translateY(0) rotate(-45deg); }
 
 .header-inner {
   display: flex;
@@ -133,8 +170,51 @@ header {
 }
 
 @media (max-width: 48em) {
+  .mobile-menu-btn {
+    display: block;
+  }
+
   .nav-bar {
-    display: none !important;
+    display: flex !important;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    background: var(--primary);
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    box-shadow: var(--shadow);
+  }
+
+  header.menu-open .nav-bar.active {
+    padding: var(--space-4) var(--space-5);
+    max-height: 25rem;
+    overflow-y: auto;
+  }
+
+  .nav-dropdown-menu {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+    padding-left: var(--space-4);
+    pointer-events: auto;
+    display: none;
+  }
+
+  .nav-dropdown.active .nav-dropdown-menu {
+    display: block;
+  }
+  
+  .nav-dropdown-menu a {
+    color: var(--surface);
   }
 
   .header-contact {
@@ -212,9 +292,10 @@ header {
 
 .logo {
   font-family: 'Plus Jakarta Sans', 'DM Sans', sans-serif;
-  font-size: 1.75rem;
+  font-size: 1.25rem;
   font-weight: 700;
   letter-spacing: 0.02em;
+  transition: font-size 0.3s ease;
 }
 
 .logo a {
@@ -226,12 +307,23 @@ header {
 }
 
 .logo img {
-  height: 2.25rem;
+  height: 2.75rem;
   width: auto;
   display: block;
-  margin-right: -1rem;
+  margin-right: -0.7rem;
+  transition: height 0.3s ease;
+}
+
+@media (min-width: 48.01em) {
+  header:not(.scrolled) .logo {
+    font-size: 2rem;
+  }
+
+  header:not(.scrolled) .logo img {
+    height: 4rem;
+  }
 }
 
 .logo span {
-  color: var(--secondary-light);
+  color: var(--surface);
 }
