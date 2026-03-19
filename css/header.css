@@ -192,7 +192,7 @@ header.scrolled, header.menu-open {
 
   header.menu-open .nav-bar.active {
     padding: var(--space-4) var(--space-5);
-    max-height: 25rem;
+    max-height: fit-content;
     overflow-y: auto;
   }
 
@@ -212,7 +212,7 @@ header.scrolled, header.menu-open {
   .nav-dropdown.active .nav-dropdown-menu {
     display: block;
   }
-  
+
   .nav-dropdown-menu a {
     color: var(--surface);
   }
